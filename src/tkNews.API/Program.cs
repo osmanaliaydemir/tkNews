@@ -20,6 +20,7 @@ using tkNews.Infrastructure.Data;
 using tkNews.Infrastructure.Data.Identity;
 using tkNews.Infrastructure.Repositories;
 using tkNews.Infrastructure.Services;
+using tkNews.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -221,10 +222,20 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         builder =>
         {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
+            builder
+                .WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? 
+                    new[] { "http://localhost:3000", "https://localhost:3000" })
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithExposedHeaders("X-Pagination");
         });
+});
+
+// Add Security Headers Middleware
+builder.Services.AddAntiforgery(options =>
+{
+    options.HeaderName = "X-XSRF-TOKEN";
 });
 
 // Add Email Service
@@ -240,6 +251,32 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Add Security Headers
+app.Use(async (context, next) =>
+{
+    context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+    context.Response.Headers["X-Frame-Options"] = "DENY";
+    context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+    context.Response.Headers["Referrer-Policy"] = "strict-origin-when-cross-origin";
+    context.Response.Headers["Permissions-Policy"] = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()";
+    
+    // Content Security Policy
+    context.Response.Headers["Content-Security-Policy"] = 
+        "default-src 'self'; " +
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
+        "style-src 'self' 'unsafe-inline'; " +
+        "img-src 'self' data: https:; " +
+        "font-src 'self'; " +
+        "connect-src 'self' https://api.teknolojikafasi.com; " +
+        "frame-ancestors 'none'; " +
+        "upgrade-insecure-requests;";
+
+    await next();
+});
+
+// Add File Upload Validation Middleware
+app.UseFileUploadValidation();
 
 // Add Rate Limiting Middleware
 app.UseIpRateLimiting();
