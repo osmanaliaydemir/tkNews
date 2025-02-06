@@ -220,11 +220,13 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
-        builder =>
+        policyBuilder =>
         {
-            builder
-                .WithOrigins(builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? 
-                    new[] { "http://localhost:3000", "https://localhost:3000" })
+            var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>() ?? 
+                new[] { "http://localhost:3000", "https://localhost:3000" };
+                
+            policyBuilder
+                .WithOrigins(allowedOrigins)
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()

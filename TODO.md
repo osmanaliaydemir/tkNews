@@ -61,18 +61,18 @@
   - [ ] Secret management
 
 ## Testing
-- [ ] Unit testler
-  - [ ] Controller testleri
-  - [ ] Service testleri
-  - [ ] Repository testleri
-- [ ] Integration testler
-  - [ ] API endpoint testleri
-  - [ ] Database integration
-  - [ ] Cache integration
-- [ ] E2E testler
-  - [ ] User flow testleri
-  - [ ] Performance testleri
-  - [ ] Security testleri
+- [x] Unit testler
+  - [x] Controller testleri
+  - [x] Service testleri
+  - [x] Repository testleri
+- [x] Integration testler
+  - [x] API endpoint testleri
+  - [x] Database integration
+  - [x] Cache integration
+- [x] E2E testler
+  - [x] User flow testleri
+  - [x] Performance testleri
+  - [x] Security testleri
 
 ## Security
 - [x] Security headers
