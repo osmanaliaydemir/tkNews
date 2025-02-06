@@ -4,10 +4,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using tkNews.API.Extensions;
 using tkNews.Application.Common.Interfaces;
 using tkNews.Application.Interfaces;
 using tkNews.Application.Services;
 using tkNews.Application.Services.Implementations;
+using tkNews.Application.Validators.Account;
 using tkNews.Domain.Entities.Identity;
 using tkNews.Domain.Enums;
 using tkNews.Infrastructure.Authorization;
@@ -20,6 +24,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Add FluentValidation
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<RegisterRequestValidator>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -158,6 +166,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Add Exception Handling Middleware
+app.UseCustomExceptionHandler();
 
 app.UseCors("AllowAll");
 

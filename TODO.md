@@ -32,16 +32,16 @@
 - [ ] Health check endpoint'lerinin eklenmesi
 
 ## 3. Validation & Error Handling
-- [ ] FluentValidation kütüphanesi ile request validasyonlarının eklenmesi
-  - Custom validation rules
-  - Validation messages
-  - Cross-field validation
-- [ ] Global exception handling middleware'inin geliştirilmesi
-  - Custom exception types
-  - Error logging
-  - Development/Production error responses
-- [ ] Model validation filter'ının eklenmesi
-- [ ] Custom exception types'ların oluşturulması
+- [x] ~~FluentValidation kütüphanesi ile request validasyonlarının eklenmesi~~
+  - ~~Custom validation rules~~
+  - ~~Validation messages~~
+  - ~~Cross-field validation~~
+- [x] ~~Global exception handling middleware'inin geliştirilmesi~~
+  - ~~Custom exception types~~
+  - ~~Error logging~~
+  - ~~Development/Production error responses~~
+- [x] ~~Model validation filter'ının eklenmesi~~
+- [x] ~~Custom exception types'ların oluşturulması~~
 
 ## 4. Performance Optimizations
 - [ ] Entity Framework performans optimizasyonları
