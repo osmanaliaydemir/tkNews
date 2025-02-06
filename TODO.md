@@ -17,10 +17,10 @@
 - [x] ~~Password reset ve email confirmation süreçlerinin implementasyonu~~
 
 ## 2. API Geliştirmeleri
-- [ ] Rate limiting implementasyonu
-  - IP-based rate limiting
-  - User-based rate limiting
-  - Endpoint-based rate limiting
+- [x] ~~Rate limiting implementasyonu~~
+  - ~~IP-based rate limiting~~
+  - ~~User-based rate limiting~~
+  - ~~Endpoint-based rate limiting~~
 - [ ] API documentation (Swagger) geliştirmesi
   - Detaylı endpoint açıklamaları
   - Request/Response örnekleri
