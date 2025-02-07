@@ -1,30 +1,46 @@
 # TODO List
 
-## API Geliştirmeleri
-- [x] Rate limiting implementasyonu
-  - [x] IP tabanlı rate limiting
-  - [x] User tabanlı rate limiting
-  - [x] Endpoint tabanlı rate limiting
-- [x] API documentation (Swagger) geliştirmesi
-  - [x] Detaylı endpoint açıklamaları
+## Backend Geliştirmeleri
+- [x] Domain katmanı
+  - [x] Entity modelleri
+  - [x] Base entity ve ortak özellikler
+  - [x] İlişkiler ve navigation property'ler
+- [x] Application katmanı
+  - [x] Repository interfaces
+  - [x] Service interfaces
+  - [x] DTO modelleri
+  - [x] Validators
+  - [x] Custom exceptions
+- [x] Infrastructure katmanı
+  - [x] DbContext implementasyonu
+  - [x] Repository implementasyonları
+  - [x] Service implementasyonları
+  - [x] Unit of Work pattern
+  - [x] Identity implementasyonu
+  - [x] JWT authentication
+  - [x] Email service
+- [x] API katmanı
+  - [x] Controllers
+  - [x] Middleware'ler
+  - [x] Filters
   - [x] Request/Response örnekleri
   - [x] Authentication dokümantasyonu
   - [x] Health check endpoints
   - [x] Redis cache implementasyonu
 
 ## Frontend Geliştirmeleri
-- [ ] React ile modern UI/UX tasarımı
-  - [ ] Responsive design
-  - [ ] Dark/Light tema desteği
-  - [ ] Animasyonlar ve geçişler
-- [ ] State management implementasyonu
-  - [ ] Redux toolkit kurulumu
-  - [ ] Async thunk middleware
-  - [ ] Persist store
-- [ ] Authentication/Authorization
-  - [ ] Login/Register sayfaları
-  - [ ] Protected routes
-  - [ ] Role based access control
+- [x] React ile modern UI/UX tasarımı
+  - [x] Responsive design
+  - [x] Dark/Light tema desteği
+  - [x] Animasyonlar ve geçişler
+- [x] State management implementasyonu
+  - [x] Redux toolkit kurulumu
+  - [x] RTK Query ile API entegrasyonu
+  - [x] Persist store
+- [x] Authentication/Authorization
+  - [x] Login/Register sayfaları
+  - [x] Protected routes
+  - [x] Role based access control
 - [ ] Haber yönetim arayüzü
   - [ ] CRUD operasyonları
   - [ ] Rich text editor
@@ -47,18 +63,17 @@
   - [ ] GitHub Actions workflow
   - [ ] Automated testing
   - [ ] Code quality checks
-- [ ] Docker containerization
-  - [ ] Multi-stage builds
-  - [ ] Docker Compose
-  - [ ] Container orchestration
+  - [ ] Docker containerization
+  - [ ] Kubernetes deployment
 - [ ] Monitoring ve logging
   - [ ] Application insights
-  - [ ] Log aggregation
-  - [ ] Performance metrics
-- [ ] Infrastructure as Code
-  - [ ] Terraform scripts
-  - [ ] Environment configurations
-  - [ ] Secret management
+  - [ ] Error tracking
+  - [ ] Performance monitoring
+- [ ] Security
+  - [ ] SSL/TLS configuration
+  - [ ] Rate limiting
+  - [ ] CORS policy
+  - [ ] Security headers
 
 ## Testing
 - [x] Unit testler
